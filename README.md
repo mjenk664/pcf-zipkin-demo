@@ -97,7 +97,14 @@ curl https://<shopping-cart-url>
 You should receive a 200 OK message that says `card successfully charged!`
 
 #### Step 2)
-After hitting the shopping cart endpoint,
+After hitting the shopping cart endpoint, you can run `cf logs` for each app to view Zipkin Trace data in the app logs:
+```
+cf logs shopping-cart
+cf logs orders
+cf logs payments
+```
+
+![cf_logs](zipkin_cf_logs.png)
 
 ### VISUALIZE TRACES & DEPENDENCIES
 Below depicts an example of the shopping-cart trace in the Zipkin Server UI:
@@ -108,6 +115,10 @@ Below depicts an example of the shopping-cart trace in the Zipkin Server UI:
 ### CLEANUP
 
 To cleanup, run:
+```
+SUFFIX=test ./scripts/deploy.sh
+```
+or
 ```
 cf delete payments -f -r
 cf delete orders -f -r
