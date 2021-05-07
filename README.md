@@ -8,7 +8,7 @@ This repository contains three applications built using express and nodeJS:
 These apps use [Zipkin](https://github.com/openzipkin/zipkin-js) to trace the calls between them.
 
 The following instrumentation frameworks are leveraged in the apps:
-- [zipkin-instrumentation-fetch](https://github.com/openzipkin/zipkin-js/tree/master/packages/zipkin-instrumentation-fetch)
+- [zipkin-instrumentation-axiosjs](https://github.com/openzipkin/zipkin-js/tree/master/packages/zipkin-instrumentation-axiosjs)
 - [zipkin-instrumentation-express](https://github.com/openzipkin/zipkin-js/tree/master/packages/zipkin-instrumentation-express)
 
 
@@ -74,7 +74,13 @@ It will create a given shopping-cart, orders, and payments app that can be used 
 
 To deploy, run:
 ```
+cf login
 cf push
+```
+or:
+```
+cf login
+SUFFIX=test ./scripts/deploy.sh
 ```
 
 ### TEST APPS
@@ -83,13 +89,15 @@ The following diagram depicts call flow for this application
 ![shopping-cart -----> orders -----> payments](shopping_cart_flow.png)
 
 #### Step 1)
-In your browser, navigate to `/checkout` or curl the `/checkout` endpoint for the given Shopping Cart app.
+In your browser, navigate to `https://<shopping-cart-url>` or curl the endpoint for the given Shopping Cart app:
+```
+curl https://<shopping-cart-url>
+```
 
 You should receive a 200 OK message that says `card successfully charged!`
 
 #### Step 2)
-After hitting the `/checkout` endpoint, navigate to the zipkin-server UI using the Route that was created when you pushed the zipkin-server app
-
+After hitting the shopping cart endpoint,
 
 ### VISUALIZE TRACES & DEPENDENCIES
 Below depicts an example of the shopping-cart trace in the Zipkin Server UI:
