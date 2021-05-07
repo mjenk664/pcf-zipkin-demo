@@ -6,10 +6,10 @@ defaults: &defaults
     - nodejs_buildpack
   env:
     NODE_ENV: production
-    ZIPKIN_SERVER_HOST: zipkin-server.apps.mjenk.io
+    ZIPKIN_BASE_URL: https://zipkin-server.apps.mjenk.io
     PAYMENTS_HOST: payments.apps.mjenk.io
     ORDERS_HOST: orders.apps.mjenk.io
-    DEBUG: false
+    DEBUG: true
     
 
 applications:
