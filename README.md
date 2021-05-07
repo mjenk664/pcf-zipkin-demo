@@ -60,9 +60,10 @@ Prior to deploying the sample apps, first UPDATE the deployment `manifest.yml` a
 ```yaml
   ...
   env:
-    ZIPKIN_SERVER_HOST: <zipkin-server-url>
+    ZIPKIN_BASE_URL: https://<zipkin-base-url>
     PAYMENTS_HOST: <payments-app-url>
     ORDERS_HOST: <orders-app-url>
+    DEBUG: true
 ```
 
 You may also update other values within the deployment manifest as needed
