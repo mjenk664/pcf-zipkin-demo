@@ -12,9 +12,10 @@ PAYMENTS_APP_NAME="payments-$SUFFIX"
 ORDERS_APP_NAME="orders-$SUFFIX"
 SHOPPING_CART_APP_NAME="shopping-cart-$SUFFIX"
 
-# payments
+## payments
 cf push $PAYMENTS_APP_NAME -m 512M --no-manifest --no-start -b nodejs_buildpack -c "npm run-script payments"
 cf set-env $PAYMENTS_APP_NAME NODE_ENV production
+cf set-env DEBUG true
 cf start $PAYMENTS_APP_NAME
 
 # orders
@@ -23,6 +24,7 @@ cf push $ORDERS_APP_NAME -m 512M --no-manifest --no-start -b nodejs_buildpack -c
 
 cf set-env $ORDERS_APP_NAME PAYMENTS_HOST $PAYMENTS_HOST
 cf set-env $ORDERS_APP_NAME NODE_ENV production
+cf set-env DEBUG true
 cf start $ORDERS_APP_NAME
 
 # shopping cart
@@ -31,6 +33,7 @@ cf push $SHOPPING_CART_APP_NAME -m 512M --no-manifest --no-start -b nodejs_build
 
 cf set-env $SHOPPING_CART_APP_NAME ORDERS_HOST $ORDERS_HOST
 cf set-env $SHOPPING_CART_APP_NAME NODE_ENV production
+cf set-env DEBUG true
 cf start $SHOPPING_CART_APP_NAME
 
 SHOPPING_CART_HOST=$(cf app $SHOPPING_CART_APP_NAME | grep routes | awk '{print $2}')

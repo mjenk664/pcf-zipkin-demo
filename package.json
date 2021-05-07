@@ -2,14 +2,14 @@
   "name": "pcf-metrics-trace-example-node",
   "version": "1.0.0",
   "engines": {
-    "node": "^8.0.0"
+    "node": "^10.0.0"
   },
   "repository": "git@github.com:pivotal-cf/pcf-metrics-trace-example-node.git",
   "license": "MIT",
   "scripts": {
-    "orders": "node orders/index.js",
-    "payments": "node payments/index.js",
-    "shopping-cart": "node shopping_cart/index.js",
+    "orders": "node orders/orders.js",
+    "payments": "node payments/payments.js",
+    "shopping-cart": "node shopping_cart/shopping_cart.js",
     "start": "gulp foreman",
     "test": "gulp"
   },
@@ -30,6 +30,7 @@
     "supertest": "latest"
   },
   "dependencies": {
+    "axios": "latest",
     "babel-core": "latest",
     "babel-plugin-add-module-exports": "latest",
     "babel-polyfill": "latest",
@@ -41,7 +42,10 @@
     "isomorphic-fetch": "latest",
     "npm": "latest",
     "zipkin": "latest",
+    "zipkin-context-cls": "latest",
+    "zipkin-instrumentation-axiosjs": "latest",
     "zipkin-instrumentation-express": "latest",
-    "zipkin-instrumentation-fetch": "latest"
+    "zipkin-instrumentation-fetch": "latest",
+    "zipkin-transport-http": "latest"
   }
 }

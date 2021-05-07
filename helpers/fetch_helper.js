@@ -1,4 +1,4 @@
-import 'isomorphic-fetch';
+import 'isomorphic-fetch'; //used for cross-browser compatibility
 import wrapFetch from 'zipkin-instrumentation-fetch';
 
 function checkStatus(response) {
